@@ -9,7 +9,8 @@
 <body>
 	<div id="container">
 		<h1>회원가입</h1>
-		<form action="">
+		<!--	action -> 요청 메세지를 입력하는 곳 -->
+		<form action="/signup" method="post">
 			<table>
 				<tr>
 					<th>이름</th>
@@ -21,11 +22,11 @@
 				</tr>
 				<tr>
 					<th>사용자이름</th>
-					<td><input type="text" name="userame"></td>
+					<td><input type="text" name="username"></td>
 				</tr>
 				<tr>
 					<th>비밀번호</th>
-					<td><input type="password" name="passwird"></td>
+					<td><input type="password" name="password"></td>
 				</tr>
 			</table>
 			<button type="submit">가입하기</button>
