@@ -10,7 +10,6 @@
 </head>
 <body>
 	<div id="container">
-	
 		<header>
 			<nav>
 				<ul>
@@ -27,5 +26,6 @@
 		
 		</footer>
 	</div>
+	<script type="text/javascript" src="/static/js/index.js"></script>
 </body>
 </html>

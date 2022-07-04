@@ -9,6 +9,7 @@
 <body>
 	<div id="container">
 		<h1>회원가입</h1>
+		<script type="text/javascript" src="https://code.jquery.com/jquery-latest.min.js"></script> 
 		<!--	action -> 요청 메세지를 입력하는 곳 -->
 		<form action="/signup" method="post">
 			<table>
@@ -22,7 +23,10 @@
 				</tr>
 				<tr>
 					<th>사용자이름</th>
-					<td><input type="text" name="username"></td>
+					<td><input type="text" class="username-input" name="username"></td>
+				</tr>
+				<tr class="username-check-msg">
+					
 				</tr>
 				<tr>
 					<th>비밀번호</th>
@@ -33,5 +37,6 @@
 			<button type="reset">재작성</button>
 		</form>
 	</div>
+	<script type="text/javascript" src="/static/js/signup.js"></script>
 </body>
 </html>
