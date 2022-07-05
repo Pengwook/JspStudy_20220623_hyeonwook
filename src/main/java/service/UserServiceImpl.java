@@ -2,6 +2,7 @@ package service;
 
 import domain.dao.UserDao;
 import domain.dao.UserDaoImpl;
+import domain.entity.User;
 import web.dto.SignupReqDto;
 
 public class UserServiceImpl implements UserService{
@@ -13,7 +14,7 @@ public class UserServiceImpl implements UserService{
 	}
 	
 	public boolean checkUsername(String username) throws Exception {
-		return userDao.findUserByUsername(username) != null;
+		return userDao.findUserByUsername(username) != null;	
 	}
 	
 	@Override
@@ -36,4 +37,13 @@ public class UserServiceImpl implements UserService{
 		return false;
 	}
 	
+	@Override
+	public User loadUser(String username, String password) throws Exception {
+		User user = userDao.findUserByUsername(username);
+		if(user == null) {
+			return null;
+		}else {
+			return user.getPassword().equals(password) ? user : null;	// null이 아닐때 발동(삼항연산자 사용한것)
+		}
+	}
 }
