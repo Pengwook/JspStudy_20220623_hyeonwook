@@ -10,35 +10,42 @@ import javax.servlet.ServletResponse;
 import javax.servlet.annotation.WebFilter;
 import javax.servlet.http.HttpFilter;
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 
 @WebFilter("/*")
-public class CharacterEncodingFilter extends HttpFilter implements Filter {
+public class AuthenticationFilter extends HttpFilter implements Filter {
+       
 
 	private static final long serialVersionUID = 1L;
 
+	public AuthenticationFilter() {
+        
+    }
 
 	public void destroy() {
 		
 	}
 
-	
 	public void doFilter(ServletRequest request, ServletResponse response, FilterChain chain) throws IOException, ServletException {
-		// 전처리
-		HttpServletRequest httpRequest = (HttpServletRequest) request;	// ServletRequest를 다운캐스팅을 해준것
-		if(!httpRequest.getMethod().equalsIgnoreCase("get")) {	// get이 아니면은 밑에 인코딩이 되게 if문 해주면 댐
-			request.setCharacterEncoding("UTF-8");
-			System.out.println("인코딩됨!");
+		HttpServletRequest req = (HttpServletRequest) request;
+		HttpServletResponse resp = (HttpServletResponse) response;
+		if(req.getRequestURI().contains("signin") || req.getRequestURI().contains("signup")) {
+			HttpSession session = req.getSession();
+			if(session.getAttribute("principal") !=null) {
+				resp.sendRedirect("/index");
+				return;
+			}
 		}
 		
-		request.setCharacterEncoding("UTF-8");
-		chain.doFilter(request, response);	// 서블릿
-		// 후처리
+		
+		
+		chain.doFilter(request, response);
 	}
 
-	
 	public void init(FilterConfig fConfig) throws ServletException {
-		
+	
 	}
 
 }

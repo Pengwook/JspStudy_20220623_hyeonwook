@@ -25,6 +25,8 @@ public class CharacterEncodingFilter extends HttpFilter implements Filter {
 	
 	public void doFilter(ServletRequest request, ServletResponse response, FilterChain chain) throws IOException, ServletException {
 		// 전처리
+		System.out.println("전처리");
+		
 		HttpServletRequest httpRequest = (HttpServletRequest) request;	// ServletRequest를 다운캐스팅을 해준것
 		if(!httpRequest.getMethod().equalsIgnoreCase("get")) {	// get이 아니면은 밑에 인코딩이 되게 if문 해주면 댐
 			request.setCharacterEncoding("UTF-8");
@@ -34,6 +36,7 @@ public class CharacterEncodingFilter extends HttpFilter implements Filter {
 		request.setCharacterEncoding("UTF-8");
 		chain.doFilter(request, response);	// 서블릿
 		// 후처리
+		System.out.println("후처리");
 	}
 
 	
