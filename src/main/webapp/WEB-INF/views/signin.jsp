@@ -8,7 +8,7 @@
 </head>
 <body>
 	<div id="container">
-		<h1>회원가입</h1>
+		<h1>로그인</h1>
 		<script type="text/javascript" src="https://code.jquery.com/jquery-latest.min.js"></script> 
 		<!--	action -> 요청 메세지를 입력하는 곳 -->
 		<form action="/signin" method="post">
