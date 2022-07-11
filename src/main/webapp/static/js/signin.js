@@ -1,6 +1,12 @@
 const inputItems = document.querySelectorAll("table input");
 const submitButton = document.querySelector(".submit-button");
 const signupButton = document.querySelector(".signup-button");
+const maintainFlag = document.querySelector("#maintain-flag");
+
+//maintainFlag.onchange = () => {	// 밑 submit 요청이 날라가고나서 data가 날라갈때 가치 보내줄꺼임
+//	console.log(maintainFlag.value);
+//	console.log(maintainFlag.checked);
+//}
 
 signupButton.onclick = () => {
 	location.href ="/signup";
@@ -26,6 +32,7 @@ function submit() {
 		data: {
 			username: inputItems[0].value,
 			password: inputItems[1].value,
+			maintain: maintainFlag.checked
 		},
 		dataType: "text",
 		success: (response) => {

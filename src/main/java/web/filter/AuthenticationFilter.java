@@ -13,6 +13,8 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import config.ServletContextConfig;
+
 
 @WebFilter("/*")
 public class AuthenticationFilter extends HttpFilter implements Filter {
@@ -38,14 +40,13 @@ public class AuthenticationFilter extends HttpFilter implements Filter {
 				return;
 			}
 		}
-		
-		
+		request.getServletContext();
 		
 		chain.doFilter(request, response);
 	}
 
 	public void init(FilterConfig fConfig) throws ServletException {
-	
+		fConfig.getServletContext();
 	}
 
 }

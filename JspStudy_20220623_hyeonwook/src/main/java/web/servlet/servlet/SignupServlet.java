@@ -29,7 +29,7 @@ public class SignupServlet extends HttpServlet {
 	private final UserService userService;
 	
 	public SignupServlet() {
-		userService = new UserServiceImpl();
+		userService = ServletContextConfig.getInstance().getUserService();
 	}
 	
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
